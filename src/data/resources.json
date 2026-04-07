@@ -1,0 +1,14 @@
+[
+  { "id": 1, "title": "Anti-Cyberbullying Family Guide", "audience": "Parent", "issue": "Bullying" },
+  { "id": 2, "title": "Digital Calm Routine Template", "audience": "Individual", "issue": "Addiction" },
+  { "id": 3, "title": "School Response SOP", "audience": "Organization", "issue": "Bullying" },
+  { "id": 4, "title": "Fraud Recovery Checklist", "audience": "Individual", "issue": "Fraud" },
+  { "id": 5, "title": "Online Safety Habits for Teens", "audience": "Parent", "issue": "Privacy" },
+  { "id": 6, "title": "Counselor Referral Toolkit", "audience": "Organization", "issue": "Wellbeing" },
+  { "id": 7, "title": "Phishing Red-Flag Card", "audience": "Individual", "issue": "Fraud" },
+  { "id": 8, "title": "Healthy Screen-Time Planner", "audience": "Parent", "issue": "Addiction" },
+  { "id": 9, "title": "Incident Escalation Matrix", "audience": "Organization", "issue": "Crisis" },
+  { "id": 10, "title": "Conflict De-escalation Scripts", "audience": "Individual", "issue": "Conflict" },
+  { "id": 11, "title": "Classroom Cyberpsychology Primer", "audience": "Parent", "issue": "Education" },
+  { "id": 12, "title": "Employee Readiness Playbook", "audience": "Organization", "issue": "Culture" }
+]
