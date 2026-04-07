@@ -1,7 +1,0 @@
-[
-  { "category": "Policy", "items": ["Acceptable use policy", "Data privacy handbook", "Reporting policy", "Vendor risk policy"] },
-  { "category": "Training", "items": ["Quarterly phishing drills", "Parent/staff sessions", "Role-based security training", "Onboarding cyberpsychology module"] },
-  { "category": "Incident Response", "items": ["Response owner assigned", "Escalation matrix ready", "Evidence protocol documented", "Counseling referral process"] },
-  { "category": "Culture", "items": ["Psychological safety channels", "No retaliation policy", "Digital boundaries campaign", "Wellbeing nudges"] },
-  { "category": "Tech Controls", "items": ["MFA enforced", "Device hardening", "Monitoring alerts", "Backups tested"] }
-]
