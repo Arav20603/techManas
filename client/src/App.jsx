@@ -353,7 +353,7 @@ function ReactivePage() {
               <button
                 key={type.id}
                 onClick={() => setIncident(type)}
-                className={`rounded-2xl border p-3 text-left transition ${type.id === incident.id ? 'border-brand-blue bg-brand-mist shadow-sm' : 'border-slate-200 bg-white hover:bg-slate-50'}`}
+                className={`rounded-2xl border p-3 text-left transition ${type.id === incident.id ? 'border-brand-blue bg-brand-mist dark:bg-slate-700 shadow-sm' : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700'}`}
               >
                 <p className="font-semibold">{type.title}</p>
                 <p className="text-sm text-slate-600">{type.description}</p>

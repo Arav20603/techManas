@@ -30,3 +30,48 @@ body {
          dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100
          dark:placeholder-slate-400 dark:focus:border-brand-teal dark:focus:ring-brand-teal/20;
 }
+
+/* ── Global dark mode text fallback ── */
+/* Ensures any slate text that wasn't explicitly given a dark: variant stays readable */
+.dark p,
+.dark li,
+.dark span,
+.dark label,
+.dark summary,
+.dark details {
+  color: inherit;
+}
+
+.dark .text-slate-600 { color: #cbd5e1; } /* slate-300 */
+.dark .text-slate-700 { color: #e2e8f0; } /* slate-200 */
+.dark .text-slate-500 { color: #94a3b8; } /* slate-400 */
+
+/* Pill / chip buttons that use bg-slate-100 text-slate-700 go invisible in dark mode */
+.dark .bg-slate-100 {
+  background-color: #334155; /* slate-700 */
+  color: #e2e8f0;
+}
+
+/* details/summary borders */
+.dark details {
+  border-color: #475569; /* slate-600 */
+  background-color: #1e293b;
+}
+
+/* org dashboard item rows */
+.dark .rounded-lg.border.p-2 {
+  border-color: #475569;
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+/* Native <option> elements ignore Tailwind dark classes */
+.input-base option {
+  background-color: #fff;
+  color: #0f172a;
+}
+
+.dark .input-base option {
+  background-color: #334155;
+  color: #f1f5f9;
+}
