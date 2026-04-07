@@ -1,6 +1,6 @@
 const styles = {
   primary: 'bg-brand-blue text-white hover:bg-brand-teal',
-  secondary: 'bg-white text-brand-blue border border-brand-blue hover:bg-brand-mist',
+  secondary: 'bg-white dark:bg-slate-700 dark:text-slate-100 dark:border-slate-500 text-brand-blue border border-brand-blue hover:bg-brand-mist dark:hover:bg-slate-600',
   danger: 'bg-brand-coral text-white hover:opacity-90',
 }
 

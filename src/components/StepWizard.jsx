@@ -6,7 +6,7 @@ export default function StepWizard({ index, total, onPrev, onNext, children, can
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <div className="text-sm text-slate-600">
+        <div className="text-sm text-slate-600 dark:text-slate-400">
           Question {index + 1} of {total}
         </div>
         <ProgressBar value={progress} />
