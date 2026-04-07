@@ -21,3 +21,12 @@ body {
 * {
   -webkit-tap-highlight-color: transparent;
 }
+
+/* ── Shared input / select / textarea styles ── */
+.input-base {
+  @apply w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-900
+         placeholder-slate-400 shadow-sm outline-none transition
+         focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20
+         dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100
+         dark:placeholder-slate-400 dark:focus:border-brand-teal dark:focus:ring-brand-teal/20;
+}

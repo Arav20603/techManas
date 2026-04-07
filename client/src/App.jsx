@@ -51,30 +51,30 @@ function AppHeader() {
   ]
 
   return (
-    <header className="sticky top-0 z-20 border-b border-slate-200/70 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-slate-200/70 dark:border-slate-700 bg-white/95 dark:bg-slate-800/95 backdrop-blur">
       <div className={`${shell} flex items-center justify-between py-2.5`}>
         <Link to="/" className="text-xl font-bold tracking-tight text-brand-blue">
           TechManas
         </Link>
-        <button className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm shadow-sm md:hidden" onClick={() => setMenu((x) => !x)}>
+        <button className="rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 dark:text-slate-200 px-3 py-1.5 text-sm shadow-sm md:hidden" onClick={() => setMenu((x) => !x)}>
           Menu
         </button>
-        <nav className={`${menu ? 'flex' : 'hidden'} absolute left-0 top-full w-full flex-col gap-2 border-b border-slate-200 bg-white p-4 md:static md:flex md:w-auto md:flex-row md:items-center md:gap-4 md:border-none md:p-0`}>
+        <nav className={`${menu ? 'flex' : 'hidden'} absolute left-0 top-full w-full flex-col gap-2 border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 md:static md:flex md:w-auto md:flex-row md:items-center md:gap-4 md:border-none md:p-0`}>
           {nav.map((item) => (
-            <NavLink key={item.to} to={item.to} className={({ isActive }) => `rounded-md px-2 py-1 text-sm font-medium transition ${isActive ? 'bg-brand-mist text-brand-blue' : 'text-slate-600 hover:bg-slate-100'}`}>
+            <NavLink key={item.to} to={item.to} className={({ isActive }) => `rounded-md px-2 py-1 text-sm font-medium transition ${isActive ? 'bg-brand-mist text-brand-blue' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'}`}>
               {item.label}
             </NavLink>
           ))}
 
           {!isLoggedIn ? (
             <>
-              <Link to="/login" className="text-blue-600 text-sm">Login</Link>
-              <Link to="/signup" className="text-green-600 text-sm">Signup</Link>
+              <Link to="/login" className="text-sm font-semibold text-brand-blue hover:underline">Login</Link>
+              <Link to="/signup" className="rounded-lg bg-brand-teal px-3 py-1 text-sm font-semibold text-white hover:brightness-105">Signup</Link>
             </>
           ) : (
             <button
               onClick={handleLogout}
-              className="bg-red-500 text-white px-3 py-1 rounded-lg text-sm"
+              className="rounded-lg bg-brand-coral px-3 py-1 text-sm font-semibold text-white hover:brightness-105"
             >
               Logout
             </button>
@@ -379,7 +379,7 @@ function ReactivePage() {
             value={details}
             onChange={(e) => setDetails(e.target.value)}
             rows={3}
-            className="w-full rounded-xl border border-slate-200 p-3 text-sm"
+            className="input-base resize-none"
             placeholder="Briefly describe what happened, when it happened, and who is involved."
           />
         </div>
@@ -400,8 +400,8 @@ function ReactivePage() {
           <h2 className="mb-2 font-semibold">5) Emotional Impact Screener (self-reflection only)</h2>
           <div className="grid gap-2">
             {screener.map((item) => (
-              <label key={item} className="rounded-lg border p-3 text-sm">
-                <input type="checkbox" className="mr-2" checked={Boolean(impact[item])} onChange={() => setImpact((prev) => ({ ...prev, [item]: !prev[item] }))} />
+              <label key={item} className="flex cursor-pointer items-start gap-2 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-3 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                <input type="checkbox" className="mt-0.5 accent-brand-blue" checked={Boolean(impact[item])} onChange={() => setImpact((prev) => ({ ...prev, [item]: !prev[item] }))} />
                 {item}
               </label>
             ))}
@@ -507,10 +507,10 @@ function ProactivePage() {
           <ProgressBar value={progress} />
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
             {boundaries.map((item) => (
-              <label key={item} className="rounded-xl border border-slate-200 p-3 text-sm">
+              <label key={item} className="flex cursor-pointer items-start gap-2 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-3 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
                 <input
                   type="checkbox"
-                  className="mr-2"
+                  className="mt-0.5 accent-brand-blue"
                   checked={selected.includes(item)}
                   onChange={() => setSelected((prev) => (prev.includes(item) ? prev.filter((x) => x !== item) : [...prev, item]))}
                 />
@@ -565,7 +565,7 @@ function ParentToolkitPage() {
           </Card>
           <Card className="border">
             <h2 className="font-semibold">Conversation Starter Tool</h2>
-            <select className="mt-2 w-full rounded-lg border p-2" value={age} onChange={(e) => setAge(e.target.value)}>
+            <select className="input-base mt-2" value={age} onChange={(e) => setAge(e.target.value)}>
               <option value="6-10">Age 6-10</option>
               <option value="11-14">Age 11-14</option>
               <option value="15-18">Age 15-18</option>
@@ -689,13 +689,13 @@ function LoginPage() {
     <main className={shell}>
       <Card className="mx-auto max-w-md space-y-3">
         <h1 className="text-2xl font-bold text-brand-blue">Demo Login</h1>
-        <select className="w-full rounded-lg border p-2">
+        <select className="input-base">
           <option>Individual</option>
           <option>Organization</option>
           <option>Counselor</option>
         </select>
-        <input className="w-full rounded-lg border p-2" placeholder="Email" />
-        <input className="w-full rounded-lg border p-2" type="password" placeholder="Password" />
+        <input className="input-base" placeholder="Email" />
+        <input className="input-base" type="password" placeholder="Password" />
         <Link to="/"><Button className="w-full">Continue</Button></Link>
       </Card>
     </main>
@@ -717,14 +717,14 @@ function AboutPage() {
 
 function AppFooter() {
   return (
-    <footer className="border-t bg-white">
-      <div className={`${shell} flex flex-wrap items-center justify-between gap-3 py-5 text-sm text-slate-600`}>
+    <footer className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 transition-colors duration-300">
+      <div className={`${shell} flex flex-wrap items-center justify-between gap-3 py-5 text-sm text-slate-600 dark:text-slate-400`}>
         <span>TechManas · Cyberpsychology for safer digital lives</span>
         <div className="flex gap-3">
-          <Link to="/about">About</Link>
-          <a href="#">Contact</a>
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
+          <Link to="/about" className="hover:text-brand-blue transition-colors">About</Link>
+          <a href="#" className="hover:text-brand-blue transition-colors">Contact</a>
+          <a href="#" className="hover:text-brand-blue transition-colors">Privacy</a>
+          <a href="#" className="hover:text-brand-blue transition-colors">Terms</a>
         </div>
       </div>
     </footer>
@@ -733,7 +733,7 @@ function AppFooter() {
 
 function App() {
   return (
-    <div>
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
       <AppHeader />
       <Routes>
         {/* PUBLIC */}
