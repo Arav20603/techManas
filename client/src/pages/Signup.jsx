@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 export default function Signup() {
   const [form, setForm] = useState({ name: '', email: '', password: '', role: 'child' })
