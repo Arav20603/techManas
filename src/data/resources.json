@@ -1,0 +1,17 @@
+[
+  { "id": 1, "title": "Anti-Cyberbullying Family Guide", "audience": "Parent", "issue": "Bullying", "type": "Guide" },
+  { "id": 2, "title": "Digital Calm Routine Template", "audience": "Individual", "issue": "Addiction", "type": "Template" },
+  { "id": 3, "title": "School Response SOP", "audience": "Organization", "issue": "Bullying", "type": "Policy" },
+  { "id": 4, "title": "Fraud Recovery Checklist", "audience": "Individual", "issue": "Fraud", "type": "Checklist" },
+  { "id": 5, "title": "Online Safety Habits for Teens", "audience": "Parent", "issue": "Privacy", "type": "Article" },
+  { "id": 6, "title": "Counselor Referral Toolkit", "audience": "Counselor", "issue": "Wellbeing", "type": "Toolkit" },
+  { "id": 7, "title": "Phishing Red-Flag Card", "audience": "Individual", "issue": "Fraud", "type": "Card" },
+  { "id": 8, "title": "Healthy Screen-Time Planner", "audience": "Parent", "issue": "Addiction", "type": "Template" },
+  { "id": 9, "title": "Incident Escalation Matrix", "audience": "Organization", "issue": "Crisis", "type": "Matrix" },
+  { "id": 10, "title": "Conflict De-escalation Scripts", "audience": "Individual", "issue": "Conflict", "type": "Guide" },
+  { "id": 11, "title": "Classroom Cyberpsychology Primer", "audience": "Parent", "issue": "Education", "type": "Article" },
+  { "id": 12, "title": "Employee Readiness Playbook", "audience": "Organization", "issue": "Culture", "type": "Playbook" },
+  { "id": 13, "title": "Digital Evidence Capture Sheet", "audience": "Individual", "issue": "Crisis", "type": "Template" },
+  { "id": 14, "title": "School Cyber Wellbeing Campaign Kit", "audience": "Organization", "issue": "Education", "type": "Toolkit" },
+  { "id": 15, "title": "Youth Conversation Starter Pack", "audience": "Parent", "issue": "Conflict", "type": "Guide" }
+]

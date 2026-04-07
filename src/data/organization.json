@@ -1,0 +1,5 @@
+[
+  { "category": "Policy", "items": ["Acceptable use policy", "Data privacy handbook", "Reporting policy", "Vendor risk policy"] },
+  { "category": "Training", "items": ["Quarterly phishing drills", "Parent/staff sessions", "Role-based security training", "Onboarding cyberpsychology module"] },
+  { "category": "Support Systems", "items": ["Psychological safety channels", "Counseling referral process", "Escalation matrix ready", "Wellbeing nudges"] }
+]
