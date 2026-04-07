@@ -1,0 +1,14 @@
+[
+  { "id": 1, "category": "Stress", "question": "I feel mentally drained after social media use." },
+  { "id": 2, "category": "Stress", "question": "I feel anxious when I cannot check my phone." },
+  { "id": 3, "category": "Stress", "question": "Online comments affect my mood for hours." },
+  { "id": 4, "category": "Behavior", "question": "I lose sleep due to late-night scrolling." },
+  { "id": 5, "category": "Behavior", "question": "My screen-time disrupts daily routines." },
+  { "id": 6, "category": "Behavior", "question": "I find it difficult to stop when content is upsetting." },
+  { "id": 7, "category": "Privacy Awareness", "question": "I review privacy settings every month." },
+  { "id": 8, "category": "Privacy Awareness", "question": "I use unique passwords and 2FA." },
+  { "id": 9, "category": "Privacy Awareness", "question": "I verify links before clicking." },
+  { "id": 10, "category": "Conflict Exposure", "question": "I have experienced online hostility recently." },
+  { "id": 11, "category": "Conflict Exposure", "question": "I avoid posting due to fear of backlash." },
+  { "id": 12, "category": "Conflict Exposure", "question": "I have seen harmful misinformation in my circles." }
+]
