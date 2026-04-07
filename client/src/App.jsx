@@ -68,16 +68,20 @@ function AppHeader() {
 
           {!isLoggedIn ? (
             <>
+              <ThemeToggle />
               <Link to="/login" className="text-sm font-semibold text-brand-blue hover:underline">Login</Link>
               <Link to="/signup" className="rounded-lg bg-brand-teal px-3 py-1 text-sm font-semibold text-white hover:brightness-105">Signup</Link>
             </>
           ) : (
-            <button
-              onClick={handleLogout}
-              className="rounded-lg bg-brand-coral px-3 py-1 text-sm font-semibold text-white hover:brightness-105"
-            >
-              Logout
-            </button>
+            <>
+              <ThemeToggle />
+              <button
+                onClick={handleLogout}
+                className="rounded-lg bg-brand-coral px-3 py-1 text-sm font-semibold text-white hover:brightness-105"
+              >
+                Logout
+              </button>
+            </>
           )}
         </nav>
       </div>
