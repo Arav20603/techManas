@@ -10,6 +10,7 @@ import Card from './components/Card'
 import ScoreBadge from './components/ScoreBadge'
 import StepWizard from './components/StepWizard'
 import ProgressBar from './components/ProgressBar'
+import { useTheme } from './context/ThemeContext'
 
 const shell = 'mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8'
 const scoreOptions = [0, 25, 50, 75, 100]
@@ -140,45 +141,101 @@ function PreventivePage() {
   )
 }
 
+function ThemeToggle() {
+  const { dark, toggle } = useTheme()
+  return (
+    <button
+      onClick={toggle}
+      aria-label="Toggle dark mode"
+      className="rounded-lg p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+    >
+      {dark ? (
+        // Sun icon
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m8.66-9h-1M4.34 12h-1m15.07-6.07-.71.71M6.34 17.66l-.71.71m12.02 0-.71-.71M6.34 6.34l-.71-.71M12 7a5 5 0 100 10A5 5 0 0012 7z" />
+        </svg>
+      ) : (
+        // Moon icon
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+        </svg>
+      )}
+    </button>
+  )
+}
+
 function AssessmentPage() {
   const [index, setIndex] = useState(0)
   const [answers, setAnswers] = useState({})
   const question = assessmentQuestions[index]
   const navigate = useNavigate()
+const score = Math.round(
+  Object.values(answers).reduce((acc, val) => acc + val, 0) /
+  assessmentQuestions.length
+)
 
-  const score = Math.round(Object.values(answers).reduce((acc, value) => acc + value, 0) / assessmentQuestions.length)
-  const categoryScores = Object.fromEntries(
-    [...new Set(assessmentQuestions.map((q) => q.category))].map((category) => {
-      const group = assessmentQuestions.filter((q) => q.category === category)
-      const total = group.reduce((acc, q) => acc + (answers[q.id] ?? 0), 0)
-      return [category, Math.round(total / group.length)]
-    }),
-  )
+const categoryScores = Object.fromEntries(
+  [...new Set(assessmentQuestions.map((q) => q.category))].map((category) => {
+    const group = assessmentQuestions.filter((q) => q.category === category)
+    const total = group.reduce((acc, q) => acc + (answers[q.id] ?? 0), 0)
+    return [category, Math.round(total / group.length)]
+  })
+)
 
-  return (
-    <main className={shell}>
-      <Card className="space-y-4">
-        <h1 className="text-2xl font-bold text-brand-blue">Cyber Wellness Assessment</h1>
-        <p className="mb-4 mt-1 text-slate-600">Short reflection across stress, behavior, privacy awareness, and online conflict exposure.</p>
-        <StepWizard
-          index={index}
-          total={assessmentQuestions.length}
-          onPrev={() => setIndex((v) => Math.max(0, v - 1))}
-          onNext={() => (index === assessmentQuestions.length - 1
+return (
+  <main className={shell}>
+    <Card className="space-y-4">
+      <h1 className="text-2xl font-bold text-brand-blue">
+        Cyber Wellness Assessment
+      </h1>
+
+      <p className="mb-4 mt-1 text-slate-600 dark:text-slate-400">
+        Short reflection across stress, behavior, privacy awareness, and online conflict exposure.
+      </p>
+
+      <StepWizard
+        index={index}
+        total={assessmentQuestions.length}
+        onPrev={() => setIndex((v) => Math.max(0, v - 1))}
+        onNext={() =>
+          index === assessmentQuestions.length - 1
             ? navigate('/preventive/results', { state: { score, categoryScores } })
-            : setIndex((v) => v + 1))}
-          canNext={answers[question.id] !== undefined}
-        >
-          <div className="space-y-3 rounded-2xl border border-brand-blue/10 bg-gradient-to-b from-brand-mist to-white p-4">
-            <h2 className="font-semibold">{question.question}</h2>
-            <div className="grid grid-cols-2 gap-2 md:grid-cols-5">
-              {scoreOptions.map((value) => (
-                <button
-                  key={value}
-                  onClick={() => setAnswers((prev) => ({ ...prev, [question.id]: value }))}
-                  className={`rounded-xl border px-3 py-2.5 text-sm font-medium transition ${answers[question.id] === value ? 'border-brand-blue bg-brand-blue text-white' : 'border-slate-200 bg-white hover:bg-slate-50'}`}
-                >
-                  {value}
+            : setIndex((v) => v + 1)
+        }
+        canNext={answers[question.id] !== undefined}
+      >
+        <div className="space-y-3 rounded-2xl border border-brand-blue/10 bg-gradient-to-b from-brand-mist to-white dark:from-slate-700 dark:to-slate-800 p-4">
+          
+          <h2 className="font-semibold dark:text-slate-100">
+            {question.question}
+          </h2>
+
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-5">
+            {scoreOptions.map((value) => (
+              <button
+                key={value}
+                onClick={() =>
+                  setAnswers((prev) => ({
+                    ...prev,
+                    [question.id]: value,
+                  }))
+                }
+                className={`rounded-xl border px-3 py-2.5 text-sm font-medium transition ${
+                  answers[question.id] === value
+                    ? 'border-brand-blue bg-brand-blue text-white'
+                    : 'border-slate-200 bg-white dark:bg-slate-600 dark:text-slate-100 dark:border-slate-500 hover:bg-slate-50 dark:hover:bg-slate-500'
+                }`}
+              >
+                {value}
+              </button>
+            ))}
+          </div>
+
+        </div>
+      </StepWizard>
+    </Card>
+  </main>
+)
                 </button>
               ))}
             </div>
@@ -190,29 +247,68 @@ function AssessmentPage() {
 }
 
 function PreventiveResults() {
-  const location = useLocation()
-  const state = location.state || { score: 0, categoryScores: {} }
-  const plan = state.score <= 40 ? recommendations.low : state.score <= 70 ? recommendations.medium : recommendations.high
+const location = useLocation()
+const state = location.state || { score: 0, categoryScores: {} }
 
-  return (
-    <main className={shell}>
-      <Card className="space-y-4">
-        <h1 className="text-2xl font-bold text-brand-blue">Your Risk Summary</h1>
-        <ScoreBadge score={state.score} />
-        <div className="grid gap-3 sm:grid-cols-2">
-          {Object.entries(state.categoryScores).map(([category, value]) => (
-            <div key={category}>
-              <div className="mb-1 flex justify-between text-sm"><span>{category}</span><span>{value}%</span></div>
-              <ProgressBar value={value} />
+const recommendationsList =
+  state.score <= 40
+    ? [
+        'Keep weekly privacy check-ins.',
+        'Schedule one screen-free hour daily.',
+        'Continue healthy conflict boundaries.',
+      ]
+    : state.score <= 70
+    ? [
+        'Use bedtime device cutoff.',
+        'Reduce trigger accounts for 14 days.',
+        'Enable all account safety controls.',
+        'Use guided breathing after distressing events.',
+      ]
+    : [
+        'Create immediate digital safety plan.',
+        'Seek trusted adult/counselor support.',
+        'Pause high-conflict platforms for 72 hours.',
+        'Follow incident readiness checklist.',
+        'Start structured recovery routine.',
+      ]
+
+return (
+  <main className={shell}>
+    <Card className="space-y-4">
+      <h1 className="text-2xl font-bold text-brand-blue">
+        Your Wellness Snapshot
+      </h1>
+
+      <ScoreBadge score={state.score} />
+
+      <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-2">
+        {Object.entries(state.categoryScores).map(([category, value]) => (
+          <div key={category}>
+            <div className="mb-1 flex justify-between text-sm dark:text-slate-300">
+              <span>{category}</span>
+              <span>{value}%</span>
             </div>
-          ))}
-        </div>
-        <h2 className="font-semibold">Recommended Learning Path</h2>
-        <ul className="list-inside list-disc space-y-1 text-slate-700">
-          {plan.map((item) => <li key={item}>{item}</li>)}
-        </ul>
-        <Button onClick={() => window.print()}>Save Wellness Plan (Print)</Button>
-      </Card>
+            <ProgressBar value={value} />
+          </div>
+        ))}
+      </div>
+
+      <h2 className="font-semibold dark:text-slate-100">
+        Your Learning Path
+      </h2>
+
+      <ul className="list-inside list-disc space-y-1 text-slate-700 dark:text-slate-300">
+        {recommendationsList.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+
+      <Button onClick={() => window.print()}>
+        Save Wellness Plan (Print)
+      </Button>
+    </Card>
+  </main>
+)
     </main>
   )
 }
