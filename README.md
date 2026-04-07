@@ -1,4 +1,3 @@
-Gemini said
 Welcome to TechManas
 Human-centered cyber wellness and resilience.
 
